@@ -30,10 +30,11 @@ task :default => :clean do
   end
 
   recipe.files << {
-    :url => "https://codeload.github.com/edenhill/librdkafka/tar.gz/v#{Rdkafka::LIBRDKAFKA_VERSION}",
+    :url => "https://github.com/edenhill/librdkafka/archive/v#{Rdkafka::LIBRDKAFKA_VERSION}.tar.gz",
     :sha256 => Rdkafka::LIBRDKAFKA_SOURCE_SHA256
   }
   recipe.configure_options = ["--host=#{recipe.host}"]
+  "https://codeload.github.com/edenhill/librdkafka/tar.gz/v#{Rdkafka::LIBRDKAFKA_VERSION}"
   recipe.cook
   # Move dynamic library we're interested in
   if recipe.host.include?('darwin')
